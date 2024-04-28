@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>digital clock</title>
+    <style>
+        body {
+            background-color: rgb(233, 241, 239);
+            position: relative;
+            padding-left: 40%;
+        }
+        .clock {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border: 4px;
+            background: rgb(63, 61, 61);
+            border-radius: 190px;
+            display: inline;
+            text-align: center;
+            border: solid;
+            box-shadow: 5px 5px 5px rgb(8, 8, 8),
+            inset 5px 5px 10px rgb(7, 8, 8),
+            inset 5px 5px 11px rgb(9, 10, 10),
+            inset 5px 5px 11px rgb(6, 7, 7);
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .container {
+            position: absolute;
+            width: 390px;
+            height: 480px;
+            border: 4px;
+            background-color: rgb(52, 54, 54);
+            border-radius: 40px;
+            border-top-left-radius: 400px;
+            border-top-right-radius: 400px;
+            box-shadow: 5px 5px 5px rgb(8, 8, 8),
+            inset 5px 5px 10px rgb(7, 8, 8),
+            inset 5px 5px 11px rgb(9, 10, 10),
+            inset 5px 5px 11px rgb(6, 7, 7);
+        }
+
+        .clock::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: black;
+            border: 3px solid white;
+            border-radius: 50px;
+        }
+
+        .clock span {
+            position: absolute;
+            inset: 20px;
+            color: white;
+            text-align: center;
+            transform-origin: center;
+            transform: rotate(calc(30deg*var(--i))); 
+        }
+
+        .clock span b {
+            font-size: 2em;
+            font-weight: 600;
+            display: inline-block;
+
+        }
+
+        .circle {
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            border: 2px solid black;
+            border-radius: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .circle2 {
+            width: 200px;
+            height: 200px;
+        }
+
+        .circle3 {
+            width: 150px;
+            height: 150px;
+        }
+
+        .circle::before {
+            content: '';
+            position: absolute;
+            top: -8.5px;
+            width: 10px;
+            height: 5px;
+            background: var(--clr);
+            border-radius: 150px;
+            box-shadow: 0 0 90px var(--clr),
+            0 0 190px var(--clr);
+        }
+
+        .digital-clock {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            color: white;
+            font-weight: bold;
+            margin-top: 200px;
+            background: linear-gradient(to right,rgb(164, 15, 90),rgb(53, 53, 159));
+            animation: animate 1.5s linear infinite;
+        }
+        @keyframes animate {
+          0%{
+            filter: hue-rotate(360deg);
+          }
+          
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let hr = document.querySelector('#hr');
+            let mn = document.querySelector('#mn');
+            let sc = document.querySelector('#sc');
+            let digitalClock = document.querySelector('.digital-clock');
+
+            function updateClock() {
+                let day = new Date();
+                let hh = day.getHours().toString().padStart(2, '0');
+                let mm = day.getMinutes().toString().padStart(2, '0');
+                let ss = day.getSeconds().toString().padStart(2, '0');
+                let time = `${hh-12}:${mm}:${ss}`;
+                digitalClock.textContent = time;
+
+                let hrDeg = (day.getHours() % 12) * 30 + day.getMinutes() * 0.5;
+                let mnDeg = day.getMinutes() * 6 + day.getSeconds() * 0.1;
+                let scDeg = day.getSeconds() * 6;
+                hr.style.transform = `rotateZ(${hrDeg}deg)`;
+                mn.style.transform = `rotateZ(${mnDeg}deg)`;
+                sc.style.transform = `rotateZ(${scDeg}deg)`;
+            }
+
+            setInterval(updateClock, 1000);
+            updateClock(); 
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="clock">
+        <div class="circle" id="sc" style="--clr:rgb(37, 229, 37);"></div>
+        <div class="circle circle2" id="mn" style="--clr:rgb(203, 185, 22);"></div>
+        <div class="circle circle3" id="hr" style="--clr:rgb(229, 53, 37);"></div>
+        <span style="--i:1"><b>1</b></span>
+        <span style="--i:2"><b>2</b></span>
+        <span style="--i:3"><b>3</b></span>
+        <span style="--i:4"><b>4</b></span>
+        <span style="--i:5"><b>5</b></span>
+        <span style="--i:6"><b>6</b></span>
+        <span style="--i:7"><b>7</b></span>
+        <span style="--i:8"><b>8</b></span>
+        <span style="--i:9"><b>9</b></span>
+        <span style="--i:10"><b>10</b></span>
+        <span style="--i:11"><b>11</b></span>
+        <span style="--i:12"><b>12</b></span>
+    </div>
+    <div class="digital-clock"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-1</title>
+    <style>
+        body {
+            background-color: rgb(31, 136, 131);
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+        
+            border-radius: 8px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: blue;
+            color: white;
+        }
+        .button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .button:hover {
+            background-color: rgb(170, 69, 216);
+        }
+        
+    </style>
+    <script>
+        function editRow(row) {
+            var nameCell = row.cells[0];
+            var idCell = row.cells[1];
+            var nameValue = nameCell.textContent.trim();
+            var idValue = idCell.textContent.trim();
+            nameCell.innerHTML = "<input type='text' value='" + nameValue + "'>";
+            idCell.innerHTML = "<input type='text' value='" + idValue + "'>";
+        }
+
+        function saveRow(row) {
+            var nameInput = row.cells[0].querySelector("input[type='text']");
+            var idInput = row.cells[1].querySelector("input[type='text']");
+            var newName = nameInput.value.trim();
+            var newId = idInput.value.trim();
+            row.cells[0].textContent = newName;
+            row.cells[1].textContent = newId;
+        }
+
+        function deleteRow(row) {
+            if (row.rowIndex !== 1 && confirm("Are you sure you want to delete this row?")) {
+                row.parentNode.removeChild(row);
+            }
+        }
+        
+        function addRow() {
+            var table = document.getElementById("t");
+            var newRow = table.insertRow(-1); 
+            var nameCell = newRow.insertCell(0);
+            var idCell = newRow.insertCell(1);
+            var actionCell = newRow.insertCell(2);
+            nameCell.innerHTML = "<input type='text' name='name[]'>";
+            idCell.innerHTML = "<input type='text' name='id[]'>";
+            var actions = ["edit", "save", "delete", "addRow"];
+            actions.forEach(function(action) {
+                var button = document.createElement("input");
+                button.type = "button";
+                button.className = "button";
+                button.value = action === "addRow" ? "Add Row" : action;
+                button.onclick = function() {
+                    if (action === "addRow") {
+                        addRow();
+                    } else {
+                        window[action + "Row"](newRow);
+                    }
+                };
+        
+                if (action !== "addRow") {
+                    actionCell.appendChild(button);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div>
+    <table border="0"  id="t">
+        <tr>
+            <th>s_name</th>
+            <th>s_id</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td><input type="text" name="name[]"></td>
+            <td><input type="text" name="id[]"></td>
+            <td>
+                <input type="button" value="edit" class="button" onclick="editRow(this.parentNode.parentNode)">
+                <input type="button" value="save" class="button" onclick="saveRow(this.parentNode.parentNode)"> 
+                <input type="button" value="delete" class="button" onclick="deleteRow(this.parentNode.parentNode)">
+                <input type="button" value="Add Row" class="button" onclick="addRow()">
+            </td>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>
+

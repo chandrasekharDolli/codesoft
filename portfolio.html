@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <titl></title>
+    <style>
+        body {
+            background: linear-gradient(rgb(5, 31, 34),rgb(58, 5, 68),rgb(66, 100, 66));
+            font-family: Arial, sans-serif;
+        }
+        .p-page {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px;
+        
+        }
+        .h-page h1 {
+            padding:0;
+            
+            color:white;
+
+        }
+        @keyframes animate {
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+        .h-page {
+        flex:1;
+            
+            margin-left: 260px;
+            text-align: justify;
+        }
+        .name{
+            margin-left: 150px;
+        }
+        .bio {
+        padding-top: 130px;
+       color: white;
+       text-align: center;
+
+        }
+        .bio-c {
+        width:250px;
+        height:600px;
+      border: 1px solid rgb(35, 43, 29);
+       color: white;
+       padding: 20px;
+       box-shadow:rgb(35, 43, 29) ;
+        }
+
+        .s:hover {
+            font-style: rgb(240, 167, 128);
+        }
+    
+        .img-src {
+            width: 200px;
+            height: 200px;
+            margin-top: 80px;
+            margin-left: 120px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(120, 184, 17, 0.5);
+        }
+      .d{
+        background: rgb(19, 92, 148);
+        font-size: 30px;
+        color: rgb(43, 226, 107);
+        text-align: center;
+        margin-top:10px;
+        border-radius: 20px;
+        box-shadow:  rgb(19, 92, 148);
+      }
+      #c{
+        margin-left: 30px;
+      }
+      .m{
+       color:rgb(13, 139, 78);
+       }
+
+       .fa-phone{
+            font-size: 20px;
+            margin: 2px;
+            color: white;
+    
+        }
+      
+    </style>
+</head>
+<body>
+    
+<div class="p-page">
+  
+    
+    <div class="bio-c">
+        <div class="m">
+            <span><i>Menu...</i></span>
+        </div>
+        
+        <div class="bio">
+        
+        <a href="portfolio.html"><span class="s"><i><font size="5" color="lightblue"><i class='home-alt-2'></i>HOME</font></i></span></a><br><br><br>
+        <a href="aboutme.html"><span class="s"><i><font size="5" color="lightblue"><box-icon name='universal-access'>ABOUT-ME</box-icon></font></i></span></a><br><br><br>
+        <a href="skills.html"><span class="s"><i><font size="5" color="lightblue">SKILLS</font></i></span></a><br><br><br>
+        <a href="projects.html"><span class="s"><i><font size="5" color="lightblue">PROJECTS</font></i></span></a><br><br><br>
+     <a href="cantact.html"><span class="s"><i><font size="5" color="lightblue"> CONTACT</font></i></span></a><br><br><br>
+        </div>
+    </div>
+    
+    <div class="h-page">
+        <div class="name">
+        <font size="7" color="white"><u><b><i>portfolio</i></b></u></font>
+        </div>
+        <div class="img">
+            
+            <img src="chandu.jpg" width="200" height="200" class="img-src">
+            
+        </div> 
+        <br><br>
+        <h1><b><i>CHANDRASEKHAR DOLLI</i></b></h1>
+        <font size="5" color="pink"><strong><i>WEB DEVELOPMENT</i></strong></font><br><br>
+        <font size="4" color="white">
+          <b>  D.Chandrasekhar,</b><i>Student of RGUKT Basar...... <br><pre>for a challenging position as a software engineer to utilize my tech <br>and design skills for software program development, testing and quality management.</i></pre>
+        </font>
+        <br>
+    
+       <a href="RESUME.odt"><button  type="button" class="d">DOWNLODE CV</button></a>
+       <a href="cantact.html"><button  type="button" class="d" id="c">CONTACT</button></a>
+    </div>
+</div>
+</body>
+</html>
